@@ -1,0 +1,16 @@
+appId: com.innodev.app
+productName: 测试打包
+copyright: Copyright © wuqiong
+asar: false
+directories:
+  output: ./out
+electronDownload:
+  mirror: 'https://npm.taobao.org/mirrors/electron/'
+win:
+  icon: app.ico
+  target:
+    - nsis
+nsis:
+  oneClick: false
+  perMachine: true
+  allowToChangeInstallationDirectory: true

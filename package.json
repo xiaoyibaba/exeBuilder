@@ -7,9 +7,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "test": "node conf/index.js create"
   },
   "devDependencies": {
-    "electron": "^16.0.1"
+    "commander": "^8.3.0",
+    "electron": "^16.0.1",
+    "electron-builder": "^22.14.5",
+    "inquirer": "^8.2.0"
   }
 }
