@@ -28,12 +28,16 @@ const exeConf = {
 const checkFile = () => {
   const ymlStats = fs.statSync('electron-builder.yml', { throwIfNoEntry: false });
   const jsonStats = fs.statSync('win-conf.json', { throwIfNoEntry: false });
+  // const outDir = fs.statSync('./out', { throwIfNoEntry: false })
   if (ymlStats && ymlStats.isFile()) {
     fs.unlinkSync('electron-builder.yml');
   }
   if (jsonStats && jsonStats.isFile()) {
     fs.unlinkSync('win-conf.json');
   }
+  // if (outDir && outDir.isDirectory()) {
+  //   fs.rmdirSync('out')
+  // }
 }
 
 // 命令行方式确定程序包配置
