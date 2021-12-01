@@ -1,26 +1,30 @@
 const { app, BrowserWindow, screen } = require('electron');
 const path = require('path');
 
+const winConf = require('./win-conf.json')
+
 let win
 
 function createWindow () {
-  const displays = screen.getAllDisplays();
-  let secondaryDisplay;
+  let x = 0;
+  let y = 0;
 
-  if (displays.length > 1) {
-    secondaryDisplay = displays[displays.length - 1]
+  if (winConf.otherDisplay) {
+    const displays = screen.getAllDisplays();
+    if (displays.length > 1) {
+      x = displays[displays.length - 1].bounds.x;
+      y = displays[displays.length - 1].bounds.y;
+    }
   }
 
-  if (secondaryDisplay) {
-    win = new BrowserWindow({
-      title: '测试',
-      frame: false,
-      fullscreen: true,
-      x: secondaryDisplay.bounds.x,
-      y: secondaryDisplay.bounds.y
-    });
-    win.loadFile(path.resolve(__dirname, './dist/index.html'));
-  }
+  win = new BrowserWindow({
+    title: winConf.title,
+    frame: false,
+    fullscreen: true,
+    x,
+    y
+  });
+  win.loadFile(path.resolve(__dirname, './dist/index.html'));
 
   win.on('closed', () => {
     win = null;

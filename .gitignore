@@ -2,3 +2,5 @@ node_modules
 dist
 out
 yarn-error.log
+conf/index.js
+win-conf.json
